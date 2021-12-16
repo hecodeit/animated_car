@@ -4,7 +4,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
 
 function Model(props) {
-  const model = useGLTF('/model.glb');
+  const model = useGLTF('./animated_car/model.glb');
   
   // Here's the animation part
   // ************************* 
