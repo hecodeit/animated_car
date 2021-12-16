@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import * as THREE from 'three'
+import { Suspense } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { useGLTF, useAnimations, Stage, PresentationControls } from '@react-three/drei'
 
-function App() {
+function Model(props) {
+  // https://stackoverflow.com/questions/63936267/how-to-extract-and-play-animation-in-react-three-fiber
+  const model = useGLTF('/model.glb')
+
+  // Here's the animation part
+  // ************************* 
+  let mixer
+  if (model.animations.length) {
+      mixer = new THREE.AnimationMixer(model.scene);
+      model.animations.forEach(clip => {
+          const action = mixer.clipAction(clip)
+          action.play();
+      });
+  }
+
+  useFrame((state, delta) => {
+      mixer?.update(delta)
+  })
+  // *************************
+
+  model.scene.traverse(child => {
+      if (child.isMesh) {
+          child.castShadow = true
+          child.receiveShadow = true
+          child.material.side = THREE.FrontSide
+      }
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <primitive 
+          object={model.scene}
+          scale={props.scale}
+      />
+  )
 }
 
-export default App;
+export default function App() {
+  return (
+    <Canvas dpr={[1, 2]} shadows camera={{ fov: 45 }}>
+      <color attach="background" args={['#101010']} />
+      <fog attach="fog" args={['#101010', 10, 20]} />
+
+      <Suspense fallback={null}>
+        <PresentationControls speed={1.5} global zoom={0.7} polar={[-0.1, Math.PI / 4]}>
+          <Stage environment={null} intensity={1} contactShadow={false} shadowBias={-0.0015}>
+            <Model scale={1.0} />
+          </Stage>
+        </PresentationControls>
+      </Suspense>
+    </Canvas>
+  )
+}

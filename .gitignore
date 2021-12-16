@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# 3d model
+/model
+
 # testing
 /coverage
 
