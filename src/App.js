@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
 
 function Model(props) {
-  const model = useGLTF('/animated_car/model.glb');
+  const model = useGLTF('/animated_car/model_b.glb');
   
   // Here's the animation part
   // ************************* 
@@ -40,7 +40,7 @@ function Model(props) {
 export default function App() {
   return (
     <Canvas dpr={[1, 2]} shadows camera={{ fov: 45 }}>
-      <color attach="background" args={['#81858B']} />
+      <color attach="background" args={['#1C0829']} />
       <PresentationControls 
          global
         zoom={2}
