@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import { Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
 
@@ -43,14 +42,15 @@ export default function App() {
     <Canvas dpr={[1, 2]} shadows camera={{ fov: 45 }}>
       <color attach="background" args={['#101010']} />
       <fog attach="fog" args={['#101010', 10, 20]} />
-
-      <Suspense fallback={null}>
-        <PresentationControls speed={1.5} global zoom={0.7} polar={[-0.1, Math.PI / 4]}>
-          <Stage environment={null} intensity={1} contactShadow={false} shadowBias={-0.0015}>
-            <Model scale={1.0} />
-          </Stage>
-        </PresentationControls>
-      </Suspense>
+      <PresentationControls 
+        speed={1.5} 
+        global 
+        zoom={0.7} 
+        polar={[-0.1, Math.PI / 4]}>
+        <Stage environment={null} intensity={1} contactShadow={false} shadowBias={-0.0015}>
+          <Model scale={1.0} />
+        </Stage>
+      </PresentationControls>
     </Canvas>
   )
 }
