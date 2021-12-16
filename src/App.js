@@ -32,7 +32,7 @@ function Model(props) {
   return (
       <primitive 
           object={model.scene}
-          scale={props.scale}
+          // scale={props.scale}
       />
   )
 }
@@ -43,12 +43,13 @@ export default function App() {
       <color attach="background" args={['#101010']} />
       <fog attach="fog" args={['#101010', 10, 20]} />
       <PresentationControls 
-        speed={1.5} 
-        global 
-        zoom={0.7} 
-        polar={[-0.1, Math.PI / 4]}>
+         global
+        zoom={2}
+        rotation={[0, -Math.PI / 4, 0]}
+        polar={[0, Math.PI / 4]}
+        azimuth={[-Infinity, Infinity]}>
         <Stage environment={null} intensity={1} contactShadow={false} shadowBias={-0.0015}>
-          <Model scale={1.0} />
+          <Model />
         </Stage>
       </PresentationControls>
     </Canvas>

@@ -14,3 +14,7 @@ body,
 body {
   background: #202025;
 }
+
+canvas {
+  touch-action: none;
+}
