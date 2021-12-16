@@ -1,13 +1,11 @@
 {
   "files": {
-    "main.css": "/animated_car/static/css/main.317c08e9.css",
-    "main.js": "/animated_car/static/js/main.a27e425f.js",
-    "index.html": "/animated_car/index.html",
-    "main.317c08e9.css.map": "/animated_car/static/css/main.317c08e9.css.map",
-    "main.a27e425f.js.map": "/animated_car/static/js/main.a27e425f.js.map"
+    "main.css": "/animated_car/static/css/main.6a7568d4.css",
+    "main.js": "/animated_car/static/js/main.e447e090.js",
+    "index.html": "/animated_car/index.html"
   },
   "entrypoints": [
-    "static/css/main.317c08e9.css",
-    "static/js/main.a27e425f.js"
+    "static/css/main.6a7568d4.css",
+    "static/js/main.e447e090.js"
   ]
 }
