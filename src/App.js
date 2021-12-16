@@ -1,12 +1,11 @@
 import * as THREE from 'three'
 import { Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, useAnimations, Stage, PresentationControls } from '@react-three/drei'
+import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
 
 function Model(props) {
-  // https://stackoverflow.com/questions/63936267/how-to-extract-and-play-animation-in-react-three-fiber
-  const model = useGLTF('/model.glb')
-
+  const model = useGLTF('/model.glb');
+  
   // Here's the animation part
   // ************************* 
   let mixer
