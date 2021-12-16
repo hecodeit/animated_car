@@ -23,8 +23,8 @@ function Model(props) {
 
   model.scene.traverse(child => {
       if (child.isMesh) {
-          child.castShadow = true
-          child.receiveShadow = true
+          // child.castShadow = true
+          // child.receiveShadow = true
           child.material.side = THREE.FrontSide
       }
   })
@@ -40,15 +40,14 @@ function Model(props) {
 export default function App() {
   return (
     <Canvas dpr={[1, 2]} shadows camera={{ fov: 45 }}>
-      <color attach="background" args={['#101010']} />
-      <fog attach="fog" args={['#101010', 10, 20]} />
+      <color attach="background" args={['#81858B']} />
       <PresentationControls 
          global
         zoom={2}
         rotation={[0, -Math.PI / 4, 0]}
         polar={[0, Math.PI / 4]}
         azimuth={[-Infinity, Infinity]}>
-        <Stage environment={null} intensity={1} contactShadow={false} shadowBias={-0.0015}>
+        <Stage environment={null} intensity={0} contactShadow={false} shadowBias={-0.0015}>
           <Model />
         </Stage>
       </PresentationControls>
